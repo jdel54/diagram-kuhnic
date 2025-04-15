@@ -325,11 +325,20 @@ export const AISystemDiagram: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Layout - Refined Notification Positioning */}
-      <div className="w-full flex flex-col items-center space-y-24 py-8 pb-16 md:hidden">
+      {/* Mobile Layout - Adding back Flow Lines */}
+      <div className="relative w-full flex flex-col items-center space-y-24 py-8 pb-16 md:hidden">
+
+        {/* Flow Lines Container (Behind Nodes) */}
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+           {/* Estimates: py-8=32px, nodeH=80px, space-y-24=96px */}
+           {/* Flow 1: top=32+80=112, height=96 */}
+           <MobileDataFlow top={112} height={96} groupPhase={0} />
+           {/* Flow 2: top=112+96+80=288, height=96 */}
+           <MobileDataFlow top={288} height={96} groupPhase={1} />
+        </div>
 
         {/* Data Aggregation Node + Notification */}
-        <div className="relative w-[80%]">
+        <div className="relative w-[80%]" style={{ zIndex: 5 }}> {/* Ensure nodes are above flows */}
           <SystemNode
             title="Data Aggregation"
             icon={<Brain className="w-6 h-6" />}
@@ -348,7 +357,7 @@ export const AISystemDiagram: React.FC = () => {
         </div>
 
         {/* LLM Models Node + Notification */}
-        <div className="relative w-[80%]">
+        <div className="relative w-[80%]" style={{ zIndex: 5 }}> {/* Ensure nodes are above flows */}
           <SystemNode
             title="LLM Models"
             icon={<MessageSquare className="w-5 h-5" />}
@@ -367,7 +376,7 @@ export const AISystemDiagram: React.FC = () => {
         </div>
 
         {/* AI Agents Node + Notification */}
-        <div className="relative w-[80%]">
+        <div className="relative w-[80%]" style={{ zIndex: 5 }}> {/* Ensure nodes are above flows */}
           <SystemNode
             title="AI Agents"
             icon={<Bot className="w-5 h-5" />}

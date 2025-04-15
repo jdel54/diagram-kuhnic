@@ -3,8 +3,8 @@ import { AISystemDiagram } from './components/AISystemDiagram';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
-      <div className="w-full max-w-[1200px] aspect-[3/2] p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+      <div className="w-full">
         <AISystemDiagram />
       </div>
     </div>

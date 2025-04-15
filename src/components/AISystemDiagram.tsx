@@ -181,7 +181,7 @@ export const AISystemDiagram: React.FC = () => {
   );
 
   return (
-    <div className="relative w-full h-full bg-white rounded-xl p-4 md:p-12 flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-full bg-white rounded-xl md:p-12 flex items-center justify-center overflow-hidden">
       {/* Desktop Layout */}
       <div className="relative w-[1200px] h-[500px] hidden md:block">
         {/* Data Flows Layer */}
@@ -325,8 +325,8 @@ export const AISystemDiagram: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Layout - Flexbox Column */}
-      <div className="w-full flex flex-col items-center space-y-16 py-8 md:hidden">
+      {/* Mobile Layout - Refined Notification Positioning */}
+      <div className="w-full flex flex-col items-center space-y-24 py-8 pb-16 md:hidden">
 
         {/* Data Aggregation Node + Notification */}
         <div className="relative w-[80%]">
@@ -337,7 +337,7 @@ export const AISystemDiagram: React.FC = () => {
             color="violet"
           />
           {messages.aggregation && (
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full">
+            <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 w-auto">
               <ActionLabel 
                 text={messages.aggregation}
                 isVisible={currentPhase === 0}
@@ -345,10 +345,6 @@ export const AISystemDiagram: React.FC = () => {
               />
             </div>
           )}
-          {/* Flow Line 1 - Positioned absolutely, relative to expected layout */}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-[4rem] pointer-events-none" style={{ zIndex: 1 }}>
-             <MobileDataFlow top={0} height={64} groupPhase={0} />
-          </div>
         </div>
 
         {/* LLM Models Node + Notification */}
@@ -360,7 +356,7 @@ export const AISystemDiagram: React.FC = () => {
             color="amber"
           />
            {messages.llm && (
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full">
+            <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 w-auto">
               <ActionLabel 
                 text={messages.llm}
                 isVisible={currentPhase === 1}
@@ -368,10 +364,6 @@ export const AISystemDiagram: React.FC = () => {
               />
             </div>
           )}
-           {/* Flow Line 2 - Positioned absolutely */}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-[4rem] pointer-events-none" style={{ zIndex: 1 }}>
-            <MobileDataFlow top={0} height={64} groupPhase={1} />
-          </div>
         </div>
 
         {/* AI Agents Node + Notification */}
@@ -383,7 +375,7 @@ export const AISystemDiagram: React.FC = () => {
             color="sky"
           />
           {messages.chat && (
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full">
+            <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 w-auto">
               <ActionLabel 
                 text={messages.chat}
                 isVisible={currentPhase === 2}
